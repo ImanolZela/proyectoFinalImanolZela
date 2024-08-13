@@ -1,0 +1,81 @@
+/* Estilos generales */
+.custom-main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.custom-profile-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el card */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 30px;
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+/* Título */
+.custom-title {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Foto de Perfil */
+.custom-profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+/* Estilos para el input de subir foto de perfil */
+.custom-file-label {
+    font-size: 0.9rem;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.custom-file-input {
+    display: none; /* Oculta el input de archivo */
+}
+
+/* Estilos para el formulario */
+.custom-input {
+    border-radius: 5px;
+    border: 1px solid #ced4da; /* Bordes suaves */
+    padding: 10px;
+}
+
+.custom-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el modal */
+.modal-content {
+    border-radius: 10px; /* Bordes redondeados para el modal */
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.btn-close {
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+}

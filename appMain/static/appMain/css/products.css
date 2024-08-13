@@ -1,0 +1,94 @@
+/* Ajuste para evitar que el header fijo cubra el título de la sección */
+.product-section {
+    scroll-margin-top: 80px; /* Ajusta este valor según la altura de tu header */
+}
+
+/* Estilos para las secciones de productos */
+.custom-section-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+.custom-category-title {
+    font-size: 1.5rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff;
+    display: inline-block;
+}
+
+.custom-product-card {
+    transition: all 0.3s ease-in-out;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.custom-product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.custom-product-image {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.custom-product-name {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.custom-product-price {
+    font-size: 1rem;
+    color: #28a745;
+}
+
+
+/* Estilos para el botón de detalle */
+.custom-detail-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-detail-btn:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+/* Estilos para la barra lateral */
+.custom-sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 100px; 
+    margin-top: 100px;/* Mantiene la barra lateral visible cuando se desplaza hacia abajo */
+}
+
+.custom-sidebar-title {
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.custom-sidebar-link {
+    font-size: 1rem;
+    color: #007bff;
+    padding: 8px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+.custom-sidebar-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}

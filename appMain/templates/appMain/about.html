@@ -1,0 +1,37 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+
+{% block index %}
+    <main class="container mt-5 custom-main">
+        <div class="row">
+            <div class="col-lg-4 text-center">
+                <br><br><br>
+                <img src="{% static 'appMain/assets/img/imanol.png' %}" alt="Imanol" class="img-fluid rounded-circle mb-4" width="300">
+            </div>
+            <div class="col-lg-8">
+                <h1 class="custom-title">Sobre Mí</h1>
+                <p class="custom-lead">Hola, soy Imanol Zela, un joven de 20 años apasionado por la programación y la creación de aplicaciones web y de escritorio. Actualmente, soy estudiante de Ingeniería de Software, y trabajo desarrollando proyectos que me permitan mejorar mis habilidades y aprender nuevas tecnologías.</p>
+                <p class="custom-lead">Tengo experiencia en varios lenguajes y frameworks, incluyendo:</p>
+                <ul class="custom-lead">
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>HTML y CSS</li>
+                    <li>SQL</li>
+                    <li>PHP y Laravel</li>
+                </ul>
+                <p class="custom-lead">Mi pasión por la programación comenzó desde temprana edad, y siempre he disfrutado de los desafíos que conlleva crear soluciones eficientes y escalables. Estoy constantemente buscando nuevas oportunidades para aprender y crecer en el campo de la tecnología.</p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="custom-title">Sobre Factory</h2>
+                <p class="custom-lead">Factory es un punto de venta de tecnología diseñado para ser un marketplace donde puedes comprar y vender artículos tecnológicos. Nuestro objetivo es conectar a vendedores y compradores en un entorno seguro y fácil de usar, ofreciendo productos innovadores y de alta calidad. Ya sea que estés buscando el último gadget o que quieras vender tus propios productos tecnológicos, Factory es el lugar perfecto para hacerlo.</p>
+            </div>
+        </div>
+    </main>
+{% endblock  %}
+    

@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory - Tu Fuente de Tecnología</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'appMain/css/style.css' %}">
+    {% block css %}{% endblock %}
+        
+</head>
+<body>
+
+    <header class="custom-header fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand custom-brand" href="#">Factory</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto custom-nav">
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'main' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'about' %}">Acerca de</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'products' %}">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'register' %}">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'perfil' %}">Mi Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    {% block index %}{% endblock%}
+        
+
+    <footer class="bg-light text-center text-lg-start mt-5 custom-footer">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase custom-footer-title">Factory</h5>
+                    <p class="custom-footer-text">&copy; 2024 Factory. Todos los derechos reservados.</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase custom-footer-links-title">Enlaces</h5>
+
+                    <ul class="list-unstyled mb-0 custom-footer-links">
+                        <li>
+                            <a href="{% url 'about' %}" class="text-dark custom-footer-link">Acerca de</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'products' %}" class="text-dark custom-footer-link">Productos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

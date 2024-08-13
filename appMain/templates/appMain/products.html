@@ -1,0 +1,174 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'appMain/css/products.css' %}">{% endblock %}
+    
+
+{% block index %}
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Sidebar de Categorías -->
+            <aside class="col-md-3">
+                <nav class="custom-sidebar">
+                    <h4 class="custom-sidebar-title">Categorías</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link custom-sidebar-link" href="#componentes">Componentes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-sidebar-link" href="#laptops">Laptops</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-sidebar-link" href="#perifericos">Periféricos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-sidebar-link" href="#monitores">Monitores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link custom-sidebar-link" href="#electronica">Electrónica</a>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4">
+                        <button type="button" class="btn btn-success w-100 custom-btn" data-bs-toggle="modal" data-bs-target="#uploadProductModal">
+                            Subir Producto
+                        </button>
+                    </div>
+                </nav>
+            </aside>
+
+            <main class="col-md-9">
+                <h2 class="custom-section-title">Nuestros Productos</h2>
+                <section id="componentes" class="product-section mt-5">
+                    <h3 class="custom-category-title">Componentes</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card custom-product-card">
+                                <img src="{% static 'appMain/images/keyboard1.jpg' %}" class="card-img-top custom-product-image" alt="Teclado Mecánico">
+                                <div class="card-body">
+                                    <h5 class="card-title custom-product-name">Teclado Mecánico</h5>
+                                    <p class="card-text custom-product-price">$50.00</p>
+                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <section id="laptops" class="product-section mt-5">
+                    <h3 class="custom-category-title">Laptops</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card custom-product-card">
+                                <img src="{% static 'appMain/images/monitor1.jpg' %}" class="card-img-top custom-product-image" alt="Monitor 4K">
+                                <div class="card-body">
+                                    <h5 class="card-title custom-product-name">Monitor 4K</h5>
+                                    <p class="card-text custom-product-price">$300.00</p>
+                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Sección de Laptops -->
+                <section id="perifericos" class="product-section mt-5">
+                    <h3 class="custom-category-title">Periféricos</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card custom-product-card">
+                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
+                                <div class="card-body">
+                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
+                                    <p class="card-text custom-product-price">$1200.00</p>
+                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="monitores" class="product-section mt-5">
+                    <h3 class="custom-category-title">Monitores</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card custom-product-card">
+                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
+                                <div class="card-body">
+                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
+                                    <p class="card-text custom-product-price">$1200.00</p>
+                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section id="electronica" class="product-section mt-5">
+                    <h3 class="custom-category-title">Electrónica</h3>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card custom-product-card">
+                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
+                                <div class="card-body">
+                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
+                                    <p class="card-text custom-product-price">$1200.00</p>
+                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+  <!-- Modal para Subir Producto -->
+<div class="modal fade" id="uploadProductModal" tabindex="-1" aria-labelledby="uploadProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="uploadProductModalLabel">Subir Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post" >
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="product-name" class="form-label">Nombre del Producto</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-price" class="form-label">Precio</label>
+                        {{ form.precio }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-category" class="form-label">Sección</label>
+                        {{ form.categoria }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-description" class="form-label">Descripción del Producto</label>
+                        {{ form.descripcion }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-image" class="form-label">Subir Imagen</label>
+                        {{ form.imagen }}
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary custom-btn">Subir Producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+

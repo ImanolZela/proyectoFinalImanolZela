@@ -1,0 +1,47 @@
+/* Estilos generales */
+.custom-main {
+    padding-top: 106px;
+    padding-bottom: 106px;
+}
+
+.custom-login-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el card */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 30px;
+    background-color: #ffffff; /* Fondo blanco */
+}
+
+.custom-title {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.custom-input {
+    border-radius: 5px;
+    border: 1px solid #ced4da; /* Bordes suaves */
+    padding: 10px;
+}
+
+.custom-btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-btn:hover {
+    background-color: #0056b3;
+}
+
+.custom-link {
+    font-size: 0.9rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.custom-link:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,216 @@
+/* Estilos globales */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #343a40;
+    padding-top: 80px; /* Ajuste para compensar el header fijo */
+}
+
+/* Estilo del navbar personalizado */
+.custom-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050; /* Asegura que el header esté por encima de otros elementos */
+    background-color: #007bff !important; /* Color de fondo del navbar */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.custom-navbar {
+    background-color: inherit; /* Hereda el color del fondo del header */
+}
+
+.custom-brand {
+    color: #fff !important; /* Color del texto de la marca */
+}
+
+.custom-nav .custom-link {
+    color: #fff !important; /* Color de los enlaces del navbar */
+    padding-right: 20px;
+}
+
+.custom-nav .custom-link:hover {
+    color: #ffc107 !important; /* Color de enlace al pasar el ratón */
+}
+
+/* Estilos personalizados para el contenido principal */
+.custom-main {
+    padding-top: 30px;
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+.custom-main-content {
+    padding: 40px;
+}
+
+.custom-title {
+    font-size: 2.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.custom-lead {
+    font-size: 1.3rem;
+    color: #6c757d; /* Color de texto secundario */
+}
+
+/* Estilos para el footer personalizado */
+.custom-footer {
+    background-color: #343a40 !important;
+    color: #fff !important;
+    padding: 40px 0;
+}
+
+.custom-footer-title {
+    color: #ffc107 !important;
+}
+
+.custom-footer-text {
+    margin: 0;
+}
+
+.custom-footer-links-title {
+    color: #ffc107 !important;
+}
+
+.custom-footer-links .custom-footer-link {
+    color: #ffc107 !important;
+    text-decoration: none;
+}
+
+.custom-footer-links .custom-footer-link:hover {
+    text-decoration: underline;
+}
+
+/* INDEX STYLE */
+
+/* Estilos para la sección de características */
+.features {
+    padding: 60px 0;
+}
+
+.custom-feature-box {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.custom-feature-box:hover {
+    transform: translateY(-5px);
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-feature-icon {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+
+.custom-feature-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.custom-feature-text {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+/* Estilos para la sección de servicios */
+.services {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.custom-service-img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.custom-service-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.custom-service-text {
+    font-size: 1.2rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.custom-service-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.custom-service-list li {
+    font-size: 1rem;
+    color: #343a40;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.custom-service-list li:before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #007bff;
+}
+
+/* Botón de servicio */
+.custom-service-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-service-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Estilos para la sección de llamado a la acción */
+.cta {
+    padding: 60px 0;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 8px;
+}
+
+.custom-cta-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffc107;
+}
+
+.custom-cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.custom-cta-btn, .custom-cta-signup-btn {
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+.custom-cta-btn:hover, .custom-cta-signup-btn:hover {
+    background-color: #343a40;
+    color: #ffc107;
+}

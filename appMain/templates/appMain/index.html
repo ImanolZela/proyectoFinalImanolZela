@@ -1,0 +1,69 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+
+{% block index %}
+<main class="container mt-5 custom-main">
+    <!-- Sección de bienvenida -->
+    <div class="text-center custom-main-content">
+        <h1 class="custom-title display-4">Bienvenido a Factory</h1>
+        <p class="lead custom-lead">Tu fuente de tecnología innovadora.</p>
+        <a href="{% url 'products' %}" class="btn btn-primary btn-lg custom-cta-btn">Explorar productos</a>
+    </div>
+
+    <!-- Sección de características -->
+    <section class="features mt-5">
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <div class="feature-box p-4 shadow-sm rounded custom-feature-box">
+                    <img src="{% static 'appMain/assets/img/innovation.png' %}" alt="Innovación" class="mb-3 custom-feature-icon">
+                    <h5 class="custom-feature-title">Innovación</h5>
+                    <p class="custom-feature-text">Encuentra los productos tecnológicos más innovadores del mercado.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-box p-4 shadow-sm rounded custom-feature-box">
+                    <img src="{% static 'appMain/assets/img/quality.png' %}" alt="Calidad" class="mb-3 custom-feature-icon">
+                    <h5 class="custom-feature-title">Calidad</h5>
+                    <p class="custom-feature-text">Solo trabajamos con las mejores marcas y productos de alta calidad.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-box p-4 shadow-sm rounded custom-feature-box">
+                    <img src="{% static 'appMain/assets/img/suport.png' %}" alt="Soporte" class="mb-3 custom-feature-icon">
+                    <h5 class="custom-feature-title">Soporte 24/7</h5>
+                    <p class="custom-feature-text">Nuestro equipo de soporte está disponible para ayudarte en cualquier momento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de servicios -->
+    <section class="services mt-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <img src="{% static 'appMain/assets/img/services.png' %}" alt="Nuestros Servicios" class="img-fluid custom-service-img">
+            </div>
+            <div class="col-lg-6">
+                <br><br><br><br><br>
+                <h2 class="custom-service-title">Nuestros Servicios</h2>
+                <p class="custom-service-text">En Factory ofrecemos una amplia gama de servicios tecnológicos diseñados para satisfacer todas tus necesidades.</p>
+                <ul class="custom-service-list">
+                    <li>Consultoría en TI</li>
+                    <li>Desarrollo de software personalizado</li>
+                    <li>Soluciones en la nube</li>
+                    <li>Mantenimiento y soporte técnico</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de llamado a la acción -->
+    <section class="cta mt-5 text-center custom-cta">
+        <h2 class="custom-cta-title">Únete a nuestra comunidad</h2>
+        <p class="custom-cta-text">Regístrate ahora para recibir las últimas noticias y ofertas exclusivas en tecnología.</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg custom-cta-signup-btn">Regístrate</a>
+    </section>
+</main>
+{% endblock  %}
+    

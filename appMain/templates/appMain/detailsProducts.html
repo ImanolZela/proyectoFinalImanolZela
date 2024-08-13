@@ -1,0 +1,68 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'appMain/css/detailsProducts.css' %}">{% endblock %}
+
+
+{% block index %}
+    <main class="container custom-main mt-5">
+        <div class="row">
+            <!-- Imagen del Producto -->
+            <div class="col-md-6">
+                <img src="{% static 'appMain/images/product.jpg' %}" class="img-fluid custom-product-image" alt="Nombre del Producto">
+            </div>
+            
+            <!-- Detalles del Producto -->
+            <div class="col-md-6">
+                <h2 class="custom-product-title">Nombre del Producto</h2>
+                <p class="custom-product-price">$199.99</p>
+                <p class="custom-product-description">
+                    Esta es una descripción detallada del producto. Incluye todas las características importantes que el cliente debe conocer antes de realizar una compra. El producto es de alta calidad y cumple con las expectativas del mercado.
+                </p>
+
+                <!-- Información del Vendedor -->
+                <div class="custom-seller-info">
+                    <h4 class="custom-seller-title">Información del Vendedor</h4>
+                    <p class="custom-seller-name"><strong>Vendedor:</strong> Juan Pérez</p>
+                    <p class="custom-seller-phone"><strong>Teléfono:</strong> +51 987654321</p>
+                    <p class="custom-seller-location"><strong>Localidad:</strong> Lima, Perú</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Comentarios -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h3 class="custom-comment-title">Comentarios</h3>
+                <div class="custom-comment-form">
+                    <form method="post">
+                        <div class="mb-3">
+                            <label for="comment-name" class="form-label">Nombre</label>
+                            <input type="text" class="form-control custom-input" id="comment-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment-text" class="form-label">Comentario</label>
+                            <textarea class="form-control custom-input" id="comment-text" rows="4" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary custom-comment-btn">Enviar Comentario</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Lista de Comentarios -->
+                <div class="custom-comment-list mt-4">
+                    <div class="custom-comment-item">
+                        <p class="custom-comment-name"><strong>Maria Lopez:</strong></p>
+                        <p class="custom-comment-text">¡Excelente producto! Estoy muy satisfecha con la calidad.</p>
+                    </div>
+                    <div class="custom-comment-item">
+                        <p class="custom-comment-name"><strong>Carlos Rivera:</strong></p>
+                        <p class="custom-comment-text">El envío fue rápido y el producto llegó en perfectas condiciones. Recomiendo al vendedor.</p>
+                    </div>
+                    <!-- Más comentarios -->
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

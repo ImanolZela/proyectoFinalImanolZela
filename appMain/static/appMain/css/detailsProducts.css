@@ -1,0 +1,109 @@
+/* Estilos generales */
+.custom-main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Imagen del Producto */
+.custom-product-image {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Título del Producto */
+.custom-product-title {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Precio del Producto */
+.custom-product-price {
+    font-size: 1.8rem;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+/* Descripción del Producto */
+.custom-product-description {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+/* Información del Vendedor */
+.custom-seller-info {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-seller-title {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.custom-seller-name,
+.custom-seller-phone,
+.custom-seller-location {
+    font-size: 1rem;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+/* Sección de Comentarios */
+.custom-comment-title {
+    font-size: 1.8rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Formulario de Comentarios */
+.custom-comment-form {
+    margin-bottom: 40px;
+}
+
+.custom-input {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+}
+
+.custom-comment-btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.custom-comment-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Lista de Comentarios */
+.custom-comment-list {
+    border-top: 1px solid #ced4da;
+    padding-top: 20px;
+}
+
+.custom-comment-item {
+    margin-bottom: 20px;
+}
+
+.custom-comment-name {
+    font-size: 1rem;
+    color: #007bff;
+    margin-bottom: 5px;
+}
+
+.custom-comment-text {
+    font-size: 1rem;
+    color: #343a40;
+}
