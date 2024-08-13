@@ -18,7 +18,7 @@ def userlogin(request):
                 login(request, user)
                 return render(request, 'appMain/index.html')
             
-        msg_login = "usuario o contrasena incorrectos"
+        msg_login = "usuario o contrasena incorrectos" #cambio de mensaje con modal
 
     form = AuthenticationFormCustom()
     return render(request, 'appCuentas/login.html', {'form': form, 'msg_login': msg_login})

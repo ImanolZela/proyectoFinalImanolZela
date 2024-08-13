@@ -1,6 +1,6 @@
-/* Ajuste para evitar que el header fijo cubra el título de la sección */
+
 .product-section {
-    scroll-margin-top: 80px; /* Ajusta este valor según la altura de tu header */
+    scroll-margin-top: 80px;
 }
 
 /* Estilos para las secciones de productos */
@@ -72,7 +72,7 @@
     box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 100px; 
-    margin-top: 100px;/* Mantiene la barra lateral visible cuando se desplaza hacia abajo */
+    margin-top: 100px;
 }
 
 .custom-sidebar-title {

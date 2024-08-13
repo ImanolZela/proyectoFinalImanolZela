@@ -4,43 +4,42 @@ body {
     line-height: 1.6;
     background-color: #f8f9fa;
     color: #343a40;
-    padding-top: 80px; /* Ajuste para compensar el header fijo */
+    padding-top: 80px;
 }
 
-/* Estilo del navbar personalizado */
+/* Estilo del navbar */
 .custom-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1050; /* Asegura que el header esté por encima de otros elementos */
-    background-color: #007bff !important; /* Color de fondo del navbar */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    z-index: 1050; 
+    background-color: #007bff !important; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 .custom-navbar {
-    background-color: inherit; /* Hereda el color del fondo del header */
+    background-color: inherit; 
 }
 
 .custom-brand {
-    color: #fff !important; /* Color del texto de la marca */
+    color: #fff !important;
 }
 
 .custom-nav .custom-link {
-    color: #fff !important; /* Color de los enlaces del navbar */
+    color: #fff !important;
     padding-right: 20px;
 }
 
 .custom-nav .custom-link:hover {
-    color: #ffc107 !important; /* Color de enlace al pasar el ratón */
+    color: #ffc107 !important;
 }
 
 /* Estilos personalizados para el contenido principal */
 .custom-main {
     padding-top: 30px;
-    background-color: #ffffff; /* Fondo blanco */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    border-radius: 8px; /* Bordes redondeados */
+    background-color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
 }
 
 .custom-main-content {
@@ -55,7 +54,7 @@ body {
 
 .custom-lead {
     font-size: 1.3rem;
-    color: #6c757d; /* Color de texto secundario */
+    color: #6c757d; 
 }
 
 /* Estilos para el footer personalizado */
