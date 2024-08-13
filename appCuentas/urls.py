@@ -6,5 +6,5 @@ urlpatterns = [
     path('pagina-login/', userlogin, name = 'login'),
     path('pagina-register/', register, name = 'register'),
     path('pagina-perfil/', perfil, name = 'perfil'),
-    path('logout/', LogoutView.as_view(template_name="appMain/index.html"), name='logout'),
-] git config --global user.name ImanolZela
+    path('logout/', LogoutView.as_view(template_name="appMain/index.html"), name='logout'), #No me funciona, me salta error 
+] 
