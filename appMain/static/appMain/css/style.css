@@ -19,6 +19,8 @@ body {
 }
 .custom-navbar {
     background-color: inherit; 
+    margin-left: 50px !important;
+    margin-right: 50px !important;
 }
 
 .custom-brand {

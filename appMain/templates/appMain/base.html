@@ -15,13 +15,13 @@
 
     <header class="custom-header fixed-top">
         <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
-            <div class="container-fluid">
+            <div class="container-fluid" style="margin-left: 100px">
                 <a class="navbar-brand custom-brand" href="#">Factory</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto custom-nav">
+                    <ul class="navbar-nav ms-auto custom-nav" style="margin-right: 100px">
                         <li class="nav-item">
                             <a class="nav-link custom-link" href="{% url 'main' %}">Inicio</a>
                         </li>
@@ -31,18 +31,24 @@
                         <li class="nav-item">
                             <a class="nav-link custom-link" href="{% url 'products' %}">Productos</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-link" href="{% url 'login' %}">Iniciar Sesión</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-link" href="{% url 'register' %}">Registro</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-link" href="{% url 'perfil' %}">Mi Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link custom-link" href="{% url 'logout' %}">Cerrar Sesion</a>
-                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            {% if request.user.is_authenticated %}
+                            <a class="nav-link dropdown-toggle d-flex align-items-center custom-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if request.user.profile.avatar %}
+                                    <img src="{{ request.user.profile.avatar.url }}" alt="Avatar" class="rounded-circle me-2" style="width: 30px; height: 30px;">
+                                {% endif %}
+                                {{ request.user.username }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'perfil' %}">Mi Perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Cerrar Sesión</a></li>
+                            </ul>
+                            {% else %}
+                                <li><a class="nav-link custom-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
+                                <li><a class="nav-link custom-link" href="{% url 'register' %}">Registro</a></li>
+                            {% endif %}
+                        </li>    
                     </ul>
                 </div>
             </div>

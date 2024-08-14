@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import login, authenticate
 from .forms import *
-    
+from .models import *
+from django.contrib.auth.decorators import login_required
+
 def userlogin(request):
-    
     msg_login =" "
     if request.method == 'POST':
         form =AuthenticationFormCustom(request, data=request.POST)
@@ -36,6 +37,26 @@ def register(request):
     form = userRegisterForm()
     return render(request, 'appCuentas/register.html', {'form': form})
 
+@login_required
 def perfil(request):
-    return render(request, 'appCuentas/perfil.html')
+    usuario = request.user
+
+    if not hasattr(usuario, 'perfil'):
+       Perfil.objects.create(user=usuario)
+
+    if request.method == 'POST':
+        form = userUpdateForm(request.POST, request.FILES, instance = usuario)
+        if form.is_valid():
+            usuario.perfil.telefono = form.cleaned_data.get('telefono')
+            usuario.perfil.ciudad = form.cleaned_data.get('ciudad')
+            if form.cleaned_data.get('imagen'):
+                usuario.perfil.imagen_perfil = form.cleaned_data.get('imagen')
+                
+            usuario.perfil.save()
+            form.save()
+            return render(request, 'appMain/index.html' )
+    else:
+        form = userUpdateForm(instance=usuario)
+        
+    return render(request, 'appCuentas/perfil.html', {"form": form})
     
