@@ -1,0 +1,52 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+{% block css %} 
+    <link rel="stylesheet" href="{% static 'appMain/css/products.css' %}">
+{% endblock %}
+
+{% block index %}
+    <div class="container mt-5">
+        <h2 class="custom-section-title">Subir Producto</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card custom-product-card">
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="product-name" class="form-label">Nombre del Producto</label>
+                                <input type="text" class="form-control custom-input" id="product-name" name="nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-price" class="form-label">Precio</label>
+                                <input type="number" class="form-control custom-input" id="product-price" name="precio" step="0.01" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-category" class="form-label">Sección</label>
+                                <select class="form-select custom-input" id="product-category" name="categoria" required>
+                                    <option value="componentes">Componentes</option>
+                                    <option value="laptops">Laptops</option>
+                                    <option value="perifericos">Periféricos</option>
+                                    <option value="monitores">Monitores</option>
+                                    <option value="electronica">Electrónica</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-description" class="form-label">Descripción del Producto</label>
+                                <textarea class="form-control custom-input" id="product-description" name="descripcion" rows="4" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-image" class="form-label">Subir Imagen</label>
+                                <input type="file" class="form-control custom-input" id="product-image" name="imagen" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary custom-btn">Subir Producto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

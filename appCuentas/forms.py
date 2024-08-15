@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import PasswordChangeForm
 
 class AuthenticationFormCustom(AuthenticationForm):
      username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control custom-input','placeholder': 'Usuario','id': 'username'}))
@@ -29,3 +30,8 @@ class userUpdateForm(UserChangeForm):
     class Meta:
         model = User
         fields = ['username', 'email','telefono', 'ciudad', 'imagen']
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    old_password = forms.CharField(label="Contraseña Actual",widget=forms.PasswordInput(attrs={'class': 'form-control','id': 'id_old_password','required': 'required',}))
+    new_password1 = forms.CharField(label="Nueva Contraseña",widget=forms.PasswordInput(attrs={'class': 'form-control','id': 'id_new_password1','required': 'required',}) )
+    new_password2 = forms.CharField(label="Confirmar Nueva Contraseña",widget=forms.PasswordInput(attrs={'class': 'form-control','id': 'id_new_password2','required': 'required',}))

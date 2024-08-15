@@ -8,22 +8,22 @@
     <main class="container custom-main mt-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="{% static 'appMain/images/product.jpg' %}" class="img-fluid custom-product-image" alt="Nombre del Producto">
+                <img src="{{producto.imagen.url}}" class="img-fluid custom-product-image" alt="{producto.nombre}">
             </div>
             
             <!-- Detalles del Producto -->
             <div class="col-md-6">
-                <h2 class="custom-product-title">Nombre del Producto</h2>
-                <p class="custom-product-price">$199.99</p>
+                <h2 class="custom-product-title">{{producto.nombre}}</h2>
+                <p class="custom-product-price">{{producto.price}}</p>
                 <p class="custom-product-description">
-                    Esta es una descripción detallada del producto. Incluye todas las características importantes que el cliente debe conocer antes de realizar una compra. El producto es de alta calidad y cumple con las expectativas del mercado.
+                   {{producto.descripcion}}
                 </p>
 
                 <div class="custom-seller-info">
                     <h4 class="custom-seller-title">Información del Vendedor</h4>
-                    <p class="custom-seller-name"><strong>Vendedor:</strong> Juan Pérez</p>
-                    <p class="custom-seller-phone"><strong>Teléfono:</strong> +51 987654321</p>
-                    <p class="custom-seller-location"><strong>Localidad:</strong> Lima, Perú</p>
+                    <p class="custom-seller-name"><strong>Vendedor:</strong> {{producto.vendedor.username}}</p>
+                    <p class="custom-seller-phone"><strong>Teléfono:</strong> {{producto.vendedor.perfil.telefono}}</p>
+                    <p class="custom-seller-location"><strong>Localidad:</strong> {{producto.vendedor.perfil.ciudad}}</p>
                 </div>
             </div>
         </div>
@@ -31,33 +31,50 @@
         <!-- Sección de Comentarios -->
         <div class="row mt-5">
             <div class="col-md-12">
-                <h3 class="custom-comment-title">Comentarios</h3>
-                <div class="custom-comment-form">
-                    <form method="post">
-                        <div class="mb-3">
-                            <label for="comment-name" class="form-label">Nombre</label>
-                            <input type="text" class="form-control custom-input" id="comment-name" required>
+                                
+                {% if user.is_authenticated %}
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ request.user.perfil.imagen_perfil.url }}" alt="{{ request.user.username }}" class="rounded-circle" width="70" height="70">
+                        <div class="ms-3">
+                            <h2 class="mb-0">{{ request.user.username }}</h2>
+                            <P class="text-muted">Última conexión: {{ request.user.last_login }}</P>
                         </div>
+                    </div>
+                {% endif %}
+                <div class="custom-comment-form">
+                    <form method="post" action="{% url 'comentar' producto.pk %}">
+                        {% csrf_token %}
                         <div class="mb-3">
-                            <label for="comment-text" class="form-label">Comentario</label>
-                            <textarea class="form-control custom-input" id="comment-text" rows="4" required></textarea>
+                            <label for="comment-text" class="form-label">Comentar</label>
+                            <textarea name="texto" class="form-control custom-input" id="comment-text" rows="4" required></textarea>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary custom-comment-btn">Enviar Comentario</button>
                         </div>
                     </form>
                 </div>
-
+                <h3 class="custom-comment-title">Comentarios</h3>
                 <!-- Lista de Comentarios -->
                 <div class="custom-comment-list mt-4">
-                    <div class="custom-comment-item">
-                        <p class="custom-comment-name"><strong>Maria Lopez:</strong></p>
-                        <p class="custom-comment-text">¡Excelente producto! Estoy muy satisfecha con la calidad.</p>
-                    </div>
-                    <div class="custom-comment-item">
-                        <p class="custom-comment-name"><strong>Carlos Rivera:</strong></p>
-                        <p class="custom-comment-text">El envío fue rápido y el producto llegó en perfectas condiciones. Recomiendo al vendedor.</p>
-                    </div>
+                    {% if producto.comentarios.exists %}
+                        {% for comentario in producto.comentarios.all %}
+                        <div class="custom-comment-item mb-3">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ comentario.usuario.perfil.imagen_perfil.url }}" alt="{{ comentario.usuario.username }}" class="rounded-circle" width="40" height="40">
+                                <div class="ms-3">
+                                    <p class="custom-comment-name mb-0"><strong>{{ comentario.usuario.username }}:</strong></p>
+                                    <small class="text-muted">{{ comentario.fecha }}</small>
+                                </div>
+                            </div>
+                            <p class="custom-comment-text mt-2">{{ comentario.texto }}</p>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info mt-5" role="alert">
+                            No hay comentarios disponibles aún.
+                        </div>
+                    {% endif %}
+                        
                 </div>
             </div>
         </div>

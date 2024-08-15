@@ -13,12 +13,18 @@
                     <h2 class="text-center custom-title mb-4">Mi Perfil</h2>
                     
                     <!-- Foto de Perfil -->
+                    
                     <div class="text-center mb-4">
-                        <img src="{{ request.user.perfil.imagen_perfil.url}}" class="img-fluid rounded-circle custom-profile-pic" alt="Foto de Perfil">
+                        {% if request.user.perfil.imagen_perfil %}
+                            <img src="{{ request.user.perfil.imagen_perfil.url}}" class="img-fluid rounded-circle custom-profile-pic" alt="Foto de Perfil">
+                            {% else %}
+                            <img src="{% static 'appCuentas/assets/img/userDefault.png' %}" class="img-fluid rounded-circle custom-profile-pic" alt="Foto de Perfil">
+                        {% endif %}
                     </div>
+                    
 
                     <!-- Formulario de Edición de Perfil -->
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data" id="profile-form">
                         {% csrf_token %}
                         <div class="text-center mb-4">
                             <div class="mt-3">
@@ -50,7 +56,7 @@
 
                     <!-- Botón para cambiar contraseña -->
                     <div class="text-center mt-4">
-                        <a type="button" class="btn btn-secondary custom-btn" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                        <a href="{% url 'updatePassword' %}" class="btn btn-secondary custom-btn">
                             Cambiar Contraseña
                         </a>
                     </div>
@@ -59,36 +65,7 @@
         </div>
     </div>
 
-    <!-- Modal para cambiar contraseña -->
-    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changePasswordModalLabel">Cambiar Contraseña</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                </div>
-                <div class="modal-body">
-                    <form method="POST">
-                        <div class="mb-3">
-                            <label for="current-password" class="form-label">Contraseña Actual</label>
-                            <input type="password" class="form-control custom-input" id="current-password" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="new-password" class="form-label">Nueva Contraseña</label>
-                            <input type="password" class="form-control custom-input" id="new-password" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirm-password" class="form-label">Confirmar Nueva Contraseña</label>
-                            <input type="password" class="form-control custom-input" id="confirm-password" required>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary custom-btn">Actualizar Contraseña</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </main>
 {% endblock %}
 

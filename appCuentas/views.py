@@ -2,7 +2,10 @@ from django.shortcuts import render
 from django.contrib.auth import login, authenticate
 from .forms import *
 from .models import *
+from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import PasswordChangeView
 
 def userlogin(request):
     msg_login =" "
@@ -56,7 +59,14 @@ def perfil(request):
             form.save()
             return render(request, 'appMain/index.html' )
     else:
-        form = userUpdateForm(instance=usuario)
+        form = userUpdateForm(instance=usuario, initial={'telefono':usuario.perfil.telefono, 'ciudad': usuario.perfil.ciudad})
         
     return render(request, 'appCuentas/perfil.html', {"form": form})
+
+#class cambiarContrasena(LoginRequiredMixin, PasswordChangeView):
+
+class updatePassword(LoginRequiredMixin, PasswordChangeView):
+    form_class = CustomPasswordChangeForm
+    template_name = 'appCuentas/updatePassword.html'
+    success_url = reverse_lazy('perfil')
     

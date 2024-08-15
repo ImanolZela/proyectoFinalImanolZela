@@ -1,0 +1,35 @@
+{% extends 'appMain/base.html' %}
+{% load static %}
+
+{% block css %} <link rel="stylesheet" href="{% static 'appMain/css/products.css' %}">{% endblock %}
+
+{% block index %}
+    <div class="container mt-4">
+        <h2>Crear Nuevo Producto</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                {{ form.nombre }}
+            </div>
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio</label>
+                {{ form.precio }}
+            </div>
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría</label>
+                {{ form.categoria }}
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                {{ form.descripcion }}
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Imagen</label><br>
+                {{ form.imagen }}
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar Producto</button>
+        </form>
+    </div>
+{% endblock %}
+    

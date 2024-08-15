@@ -30,145 +30,178 @@
                     </ul>
 
                     <div class="mt-4">
-                        <button type="button" class="btn btn-success w-100 custom-btn" data-bs-toggle="modal" data-bs-target="#uploadProductModal">
+                        <a href="{% url 'createProducts' %}" class="btn btn-success w-100 custom-btn">
                             Subir Producto
-                        </button>
+                        </a>
                     </div>
                 </nav>
             </aside>
 
             <main class="col-md-9">
                 <h2 class="custom-section-title">Nuestros Productos</h2>
-                <section id="componentes" class="product-section mt-5">
-                    <h3 class="custom-category-title">Componentes</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card custom-product-card">
-                                <img src="{% static 'appMain/images/keyboard1.jpg' %}" class="card-img-top custom-product-image" alt="Teclado Mecánico">
-                                <div class="card-body">
-                                    <h5 class="card-title custom-product-name">Teclado Mecánico</h5>
-                                    <p class="card-text custom-product-price">$50.00</p>
-                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
-                                </div>
-                            </div>
-                        </div>
 
-                    </div>
-                </section>
-
-                <section id="laptops" class="product-section mt-5">
-                    <h3 class="custom-category-title">Laptops</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card custom-product-card">
-                                <img src="{% static 'appMain/images/monitor1.jpg' %}" class="card-img-top custom-product-image" alt="Monitor 4K">
-                                <div class="card-body">
-                                    <h5 class="card-title custom-product-name">Monitor 4K</h5>
-                                    <p class="card-text custom-product-price">$300.00</p>
-                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
-                                </div>
+                
+                {% if productos_componentes or productos_laptops or productos_perifericos or productos_monitores or productos_electronica %}
+                    {% if productos_componentes %}
+                        <section id="componentes" class="product-section mt-5">
+                            <h3 class="custom-category-title">Componentes</h3>
+                            <div class="row">
+                                {% for producto in productos_componentes %}
+                                    <div class="col-md-4">
+                                        <div class="card custom-product-card">
+                                            <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
+                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                                {% if request.user == producto.vendedor or request.user.is_superuser %}
+                                                    <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
+                                                    <a href="#" class="btn btn-danger custom-detail-btn" data-bs-toggle="modal" data-bs-target="#deleteModal"data-product-name="{{ producto.nombre }}"data-product-category="{{ producto.categoria }}" data-url="{% url 'deleteProducts' producto.pk %}">Borrar</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>      
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-
-                    </div>
-                </section>
-
-                <!-- Secciónes -->
-                <section id="perifericos" class="product-section mt-5">
-                    <h3 class="custom-category-title">Periféricos</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card custom-product-card">
-                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
-                                <div class="card-body">
-                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
-                                    <p class="card-text custom-product-price">$1200.00</p>
-                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
-                                </div>
+                        </section>
+                    {% endif %}
+    
+                    {% if productos_laptops %}
+                        <section id="laptops" class="product-section mt-5">
+                            <h3 class="custom-category-title">Laptops</h3>
+                            <div class="row">
+                                {% for producto in productos_laptops %}
+                                    <div class="col-md-4">
+                                        <div class="card custom-product-card">
+                                            <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
+                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                                {% if request.user == producto.vendedor or request.user.is_superuser %}
+                                                    <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
+                                                    <a href="#" class="btn btn-danger custom-detail-btn" data-bs-toggle="modal" data-bs-target="#deleteModal"data-product-name="{{ producto.nombre }}"data-product-category="{{ producto.categoria }}" data-url="{% url 'deleteProducts' producto.pk %}">Borrar</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>      
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="monitores" class="product-section mt-5">
-                    <h3 class="custom-category-title">Monitores</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card custom-product-card">
-                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
-                                <div class="card-body">
-                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
-                                    <p class="card-text custom-product-price">$1200.00</p>
-                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
-                                </div>
+                        </section>
+                    {% endif %}
+    
+                    {% if productos_perifericos %}
+                        <section id="perifericos" class="product-section mt-5">
+                            <h3 class="custom-category-title">Periféricos</h3>
+                            <div class="row">
+                                {% for producto in productos_perifericos %}
+                                    <div class="col-md-4">
+                                        <div class="card custom-product-card">
+                                            <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
+                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                                {% if request.user == producto.vendedor or request.user.is_superuser %}
+                                                    <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
+                                                    <a href="#" class="btn btn-danger custom-detail-btn" data-bs-toggle="modal" data-bs-target="#deleteModal"data-product-name="{{ producto.nombre }}"data-product-category="{{ producto.categoria }}" data-url="{% url 'deleteProducts' producto.pk %}">Borrar</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>      
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                    </div>
-                </section>
-                <section id="electronica" class="product-section mt-5">
-                    <h3 class="custom-category-title">Electrónica</h3>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card custom-product-card">
-                                <img src="{% static 'appMain/images/laptop1.jpg' %}" class="card-img-top custom-product-image" alt="Laptop Gaming">
-                                <div class="card-body">
-                                    <h5 class="card-title custom-product-name">Laptop Gaming</h5>
-                                    <p class="card-text custom-product-price">$1200.00</p>
-                                    <a href="#" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
-                                </div>
+                        </section>
+                    {% endif %}
+    
+                    {% if productos_monitores %}
+                        <section id="monitores" class="product-section mt-5">
+                            <h3 class="custom-category-title">Monitores</h3>
+                            <div class="row">
+                                {% for producto in productos_monitores %}
+                                    <div class="col-md-4">
+                                        <div class="card custom-product-card">
+                                            <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
+                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                                {% if request.user == producto.vendedor or request.user.is_superuser %}
+                                                    <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
+                                                    <a href="#" class="btn btn-danger custom-detail-btn" data-bs-toggle="modal" data-bs-target="#deleteModal"data-product-name="{{ producto.nombre }}"data-product-category="{{ producto.categoria }}" data-url="{% url 'deleteProducts' producto.pk %}">Borrar</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>      
+                                    </div>
+                                {% endfor %}
                             </div>
-                        </div>
-                    </div>
-                </section>
+                        </section>
+                    {% endif %}
+    
+                    {% if productos_electronica %}
+                        <section id="electronica" class="product-section mt-5">
+                            <h3 class="custom-category-title">Electrónica</h3>
+                            <div class="row">
+                                {% for producto in productos_electronica %}
+                                    <div class="col-md-4">
+                                        <div class="card custom-product-card">
+                                            <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
+                                            <div class="card-body">
+                                                <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
+                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
+                                                {% if request.user == producto.vendedor or request.user.is_superuser %}
+                                                    <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
+                                                    <a href="#" class="btn btn-danger custom-detail-btn" data-bs-toggle="modal" data-bs-target="#deleteModal"data-product-name="{{ producto.nombre }}"data-product-category="{{ producto.categoria }}" data-url="{% url 'deleteProducts' producto.pk %}">Borrar</a>
+                                                {% endif %}
+                                            </div>
+                                        </div>      
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </section>
+                    {% endif %}
+                
+                {% else %}
 
+                    <div class="alert alert-info mt-5" role="alert">
+                        No hay productos disponibles para mostrar en este momento.
+                    </div>
+
+                {% endif %}
+                    
             </main>
         </div>
     </div>
 
-  <!-- Modal para Subir Producto -->
-<div class="modal fade" id="uploadProductModal" tabindex="-1" aria-labelledby="uploadProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="uploadProductModalLabel">Subir Producto</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form method="post" >
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="product-name" class="form-label">Nombre del Producto</label>
-                        {{ form.nombre }}
-                    </div>
-                    <div class="mb-3">
-                        <label for="product-price" class="form-label">Precio</label>
-                        {{ form.precio }}
-                    </div>
-                    <div class="mb-3">
-                        <label for="product-category" class="form-label">Sección</label>
-                        {{ form.categoria }}
-                    </div>
-                    <div class="mb-3">
-                        <label for="product-description" class="form-label">Descripción del Producto</label>
-                        {{ form.descripcion }}
-                    </div>
-                    <div class="mb-3">
-                        <label for="product-image" class="form-label">Subir Imagen</label>
-                        {{ form.imagen }}
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary custom-btn">Subir Producto</button>
-                    </div>
-                </form>
+
+    <!-- Modal de confirmación de eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar el producto {{ producto.nombre }} de la lista {{producto.categoria}}?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <form id="deleteForm" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
+    
+
 {% endblock %}
 
 
-
-
-
-
-
-
+{% block js %}<script src="{% static 'appMain/js/script.js' %}"></script>{% endblock %}
+    
