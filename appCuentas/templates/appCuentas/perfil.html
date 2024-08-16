@@ -11,9 +11,6 @@
             <div class="card custom-profile-card">
                 <div class="card-body">
                     <h2 class="text-center custom-title mb-4">Mi Perfil</h2>
-                    
-                    <!-- Foto de Perfil -->
-                    
                     <div class="text-center mb-4">
                         {% if request.user.perfil.imagen_perfil %}
                             <img src="{{ request.user.perfil.imagen_perfil.url}}" class="img-fluid rounded-circle custom-profile-pic" alt="Foto de Perfil">
@@ -22,8 +19,6 @@
                         {% endif %}
                     </div>
                     
-
-                    <!-- Formulario de Edición de Perfil -->
                     <form method="POST" enctype="multipart/form-data" id="profile-form">
                         {% csrf_token %}
                         <div class="text-center mb-4">
@@ -53,8 +48,6 @@
                             <button type="submit" class="btn btn-primary custom-btn">Guardar Cambios</button>
                         </div>
                     </form>
-
-                    <!-- Botón para cambiar contraseña -->
                     <div class="text-center mt-4">
                         <a href="{% url 'updatePassword' %}" class="btn btn-secondary custom-btn">
                             Cambiar Contraseña

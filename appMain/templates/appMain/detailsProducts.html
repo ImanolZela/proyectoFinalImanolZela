@@ -11,7 +11,6 @@
                 <img src="{{producto.imagen.url}}" class="img-fluid custom-product-image" style="width: 500px; height: 500px; margin-left: 50px;" alt="{producto.nombre}">
             </div>
             
-            <!-- Detalles del Producto -->
             <div class="col-md-6">
                 <br>
                 <br>
@@ -31,7 +30,6 @@
             </div>
         </div>
 
-        <!-- Sección de Comentarios -->
         <div class="row mt-5">
             <div class="col-md-12">
                                 
@@ -61,7 +59,7 @@
                     </form>
                 </div>
                 <h3 class="custom-comment-title">Comentarios</h3>
-                <!-- Lista de Comentarios -->
+
                 <div class="custom-comment-list mt-4">
                     {% if producto.comentarios.exists %}
                         {% for comentario in producto.comentarios.all %}

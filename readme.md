@@ -35,7 +35,7 @@ La aplicación **appMain** es la encargada de gestionar los productos y las oper
 - **static/appMain/assets/img/products/**: Contiene las imágenes relacionadas con los productos.
 - **static/appMain/assets/css/**: Contiene los archivos CSS para el diseño de las páginas relacionadas con los productos, como `detailsProducts.css`, `products.css`, y `style.css`.
 - **static/appMain/assets/js/**: Contiene los archivos JavaScript que se utilizan en las páginas de productos.
-- **templates/appMain/**: Contiene las plantillas HTML que renderizan las vistas para gestionar los productos, como `createProducts.html`, `updateProducts.html`, `deleteProducts.html`, `detailsProducts.html`, entre otras.
+- **templates/appMain/**: Contiene las plantillas HTML que renderizan las vistas para gestionar los productos, como `createProducts.html`, `updateProducts.html`, `detailsProducts.html`, entre otras.
 
 **Modelos en appMain:**
 - **Producto**: Representa un producto tecnológico o electrónico que se puede publicar en el sitio.
@@ -58,7 +58,7 @@ La aplicación **appCuentas** gestiona todo lo relacionado con los usuarios, com
 
 Ambas aplicaciones están diseñadas para trabajar en conjunto. La appMain se enfoca en el manejo de productos, mientras que la appCuentas maneja todo lo relacionado con los usuarios.
 
-### Modelos y Relaciones
+## Modelos y Relaciones
 
 El proyecto se basa en tres modelos principales distribuidos entre las aplicaciones **appMain** y **appCuentas**. A continuación, la descripción cada uno de estos modelos y sus relaciones.
 
@@ -94,7 +94,7 @@ El modelo **Comentario** permite a los usuarios dejar comentarios en los product
   - **Texto**: Contiene el contenido del comentario.
   - **Fecha**: Almacena la fecha y hora en que se creó el comentario (se genera automáticamente).
 
-### Vistas (Views)
+## Vistas (Views)
 
 Las vistas en el proyecto están distribuidas entre dos aplicaciones principales: **appMain** y **appCuentas**. A continuación, se detalla la funcionalidad principal de cada una.
 
@@ -131,9 +131,57 @@ Las vistas en el proyecto están distribuidas entre dos aplicaciones principales
 - **LoginRequiredMixin y @login_required**: Varias vistas están protegidas mediante decoradores y mixins que aseguran que solo los usuarios autenticados puedan acceder a ellas.
 - **Mensajes de Error y Confirmación**: Se implementan mensajes de error y confirmación para mejorar la experiencia del usuario, asegurando que los usuarios sean informados adecuadamente durante los procesos de inicio de sesión, registro y actualización de datos.
 
----
+## Configuración de URLs
 
-Este resumen de las vistas proporciona una visión clara de las funcionalidades principales de las aplicaciones **appMain** y **appCuentas** dentro de tu proyecto Django. ¿Hay algo más que te gustaría ajustar o añadir?
+El proyecto está organizado con tres archivos principales de configuración de URLs: uno a nivel de proyecto y dos específicos para las aplicaciones **appMain** y **appCuentas**. A continuación, la explicación cómo están estructuradas las rutas en cada archivo.
+
+#### 1. URLs a Nivel de Proyecto
+
+Este archivo es el principal punto de entrada para las rutas de todo el proyecto. Aquí se incluyen las rutas de las aplicaciones principales y la configuración para servir archivos estáticos.
+
+- **Rutas Importantes**:
+  - `path('admin/', admin.site.urls)`: Ruta para acceder al panel de administración de Django.
+  - `path('', include('appMain.urls'))`: Incluye todas las rutas definidas en la aplicación **appMain**.
+  - `path('sesion/', include('appCuentas.urls'))`: Incluye todas las rutas definidas en la aplicación **appCuentas**.
+  - `urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)`: Configura la ruta para servir archivos de medios (imágenes, etc.) en desarrollo.
+
+#### 2. URLs de appMain
+
+Este archivo define las rutas relacionadas con la gestión de productos y la navegación básica del sitio.
+
+- **Rutas Importantes**:
+  - `path('', inicio, name='main')`: Ruta para la página de inicio.
+  - `path('pagina-about/', about, name='about')`: Ruta para la página "Acerca de".
+  - `path('crear-producto/', createProducts, name='createProducts')`: Ruta para crear un nuevo producto.
+  - `path('pagina-products/', products, name='products')`: Ruta para ver todos los productos organizados por categoría.
+  - `path('details/<pk>/', detailsProduct.as_view(), name='details')`: Ruta para ver los detalles de un producto específico.
+  - `path('actualizar-producto/<pk>/', updateProducts.as_view(), name='updateProducts')`: Ruta para actualizar un producto existente.
+  - `path('borrar-producto/<pk>/', deleteProducts.as_view(), name='deleteProducts')`: Ruta para eliminar un producto.
+  - `path('producto/<pk>/coment/', comentProducts.as_view(), name='comentar')`: Ruta para agregar un comentario a un producto.
+
+#### 3. URLs de appCuentas
+
+Este archivo define las rutas relacionadas con la autenticación y gestión de cuentas de usuario.
+
+- **Rutas Importantes**:
+  - `path('pagina-login/', userlogin, name='login')`: Ruta para iniciar sesión.
+  - `path('pagina-register/', register, name='register')`: Ruta para registrar un nuevo usuario.
+  - `path('pagina-perfil/', perfil, name='perfil')`: Ruta para ver y actualizar el perfil del usuario.
+  - `path('updatePassword/', updatePassword.as_view(), name='updatePassword')`: Ruta para cambiar la contraseña del usuario.
+  - `path('logout/', LogoutView.as_view(template_name='appMain/index.html'), name='logout')`: Ruta para cerrar sesión, redirigiendo a la página de inicio.
+
+## Conclusión
+
+Factory es un proyecto diseñado para ofrecer un marketplace especializado en productos tecnológicos y electrónicos, destacando por su funcionalidad, seguridad y facilidad de uso. Desarrollado con el framework Django, el proyecto sigue una estructura modular que facilita su mantenimiento y escalabilidad, asegurando que cada componente funcione de manera integrada y eficiente.
+
+El desarrollo de Factory implicó la implementación de funcionalidades clave, como la gestión y autenticación de usuarios, la creación y visualización de productos, y la interacción a través de comentarios. Estas características no solo hacen que el sitio sea intuitivo y práctico para los usuarios finales, sino que también reflejan un enfoque meticuloso en la seguridad y la experiencia de usuario.
+
+La estructura clara del proyecto permite futuras expansiones, lo que hace de Factory una base sólida sobre la cual se pueden construir nuevas funcionalidades. Desde la organización de productos en diferentes categorías hasta la personalización de perfiles de usuario, cada aspecto de Factory ha sido cuidadosamente diseñado para cumplir con los estándares de un marketplace moderno y competitivo.
+
+Este proyecto demuestra la aplicación efectiva de tecnologías web modernas y prácticas de desarrollo, y está preparado para enfrentar las demandas de un entorno de producción real.
+
+
+
 
 
 
