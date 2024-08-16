@@ -52,7 +52,7 @@
                                             <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
                                             <div class="card-body">
                                                 <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
-                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <p class="card-text custom-product-price">$ {{ producto.precio }}</p>
                                                 <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
                                                 {% if request.user == producto.vendedor or request.user.is_superuser %}
                                                     <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
@@ -76,7 +76,7 @@
                                             <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
                                             <div class="card-body">
                                                 <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
-                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <p class="card-text custom-product-price">$ {{ producto.precio }}</p>
                                                 <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
                                                 {% if request.user == producto.vendedor or request.user.is_superuser %}
                                                     <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
@@ -100,7 +100,7 @@
                                             <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
                                             <div class="card-body">
                                                 <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
-                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <p class="card-text custom-product-price">$ {{ producto.precio }}</p>
                                                 <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
                                                 {% if request.user == producto.vendedor or request.user.is_superuser %}
                                                     <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
@@ -124,7 +124,7 @@
                                             <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
                                             <div class="card-body">
                                                 <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
-                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <p class="card-text custom-product-price">$ {{ producto.precio }}</p>
                                                 <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
                                                 {% if request.user == producto.vendedor or request.user.is_superuser %}
                                                     <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
@@ -148,7 +148,7 @@
                                             <img src="{{ producto.imagen.url }}" class="card-img-top custom-product-image" alt="{{ producto.nombre }}">
                                             <div class="card-body">
                                                 <h5 class="card-title custom-product-name">{{ producto.nombre }}</h5>
-                                                <p class="card-text custom-product-price">{{ producto.precio }}</p>
+                                                <p class="card-text custom-product-price">$ {{ producto.precio }}</p>
                                                 <a href="{% url 'details' producto.pk %}" class="btn btn-primary custom-detail-btn">Ver Detalle</a>
                                                 {% if request.user == producto.vendedor or request.user.is_superuser %}
                                                     <a href="{% url 'updateProducts' producto.pk %}" class="btn btn-success custom-detail-btn">Actualizar</a>
