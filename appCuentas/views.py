@@ -28,7 +28,7 @@ def userlogin(request):
                 error_login = True
                 msg_login = "Usuario o contraseña incorrectos"
         else:
-            error_login = True  # Capturar todos los errores de validación
+            error_login = True 
             msg_login = "Usuario o contraseña incorrectos"
 
     else:
@@ -42,13 +42,11 @@ def register(request):
     if request.method == 'POST':
         form = userRegisterForm(request.POST)
         if form.is_valid():
-            with transaction.atomic():  # Usar una transacción para asegurar que ambos objetos se creen juntos
+            with transaction.atomic():  
                 user = form.save()
 
-                # Crear perfil para el nuevo usuario
                 Perfil.objects.create(user=user)
 
-                # Autenticación y login automático
                 username = form.cleaned_data.get('username')
                 raw_password = form.cleaned_data.get('password1')
                 user = authenticate(username=username, password=raw_password)
@@ -94,8 +92,7 @@ class updatePassword(LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy('perfil')
 
     def form_valid(self, form):
-        super().form_valid(form)  # Ejecuta la lógica predeterminada
-        # Renderiza el template con la bandera para mostrar el modal
+        super().form_valid(form)
         return render(self.request, self.template_name, {
             'form': form,
             'password_updated': True

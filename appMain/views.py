@@ -18,7 +18,6 @@ def about(request):
 def createProducts(request):
     usuario = request.user
     
-    # Verificar si el perfil está configurado (solo ciudad y teléfono son obligatorios)
     perfil_configurado = all([
         usuario.perfil.telefono, 
         usuario.perfil.ciudad
