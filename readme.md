@@ -13,6 +13,11 @@
 - **Registro y Gestión de Usuarios**: Los usuarios pueden registrarse en el sitio para crear un perfil, que les permitirá gestionar sus publicaciones y realizar compras.
 
 ### Explicacion del contenido
+  En esta sección se proporcionan detalles clave sobre el proyecto, incluyendo un video explicativo y un enlace a los casos de prueba utilizados para verificar la funcionalidad del sitio.
+
+  - **[Video Explicativo del Sitio](https://www.youtube.com/tu-video-explicativo)**: En este video se ofrece una explicacion general del sitio, incluyendo una demostración de sus principales características y funcionalidades.
+
+  - **[Casos de Prueba](https://docs.google.com/spreadsheets/d/1LzyH7IkuY0RAXvbMSutm5OFLngtCm8VPL2OD704ht-4/edit?usp=sharing)**: Acceso a los casos de prueba para validar las diferentes funcionalidades del sitio.
 
 ## Usuarios de Prueba
 
