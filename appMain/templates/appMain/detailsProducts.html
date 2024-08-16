@@ -8,11 +8,14 @@
     <main class="container custom-main mt-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{producto.imagen.url}}" class="img-fluid custom-product-image" alt="{producto.nombre}">
+                <img src="{{producto.imagen.url}}" class="img-fluid custom-product-image" style="width: 500px; height: 500px; margin-left: 50px;" alt="{producto.nombre}">
             </div>
             
             <!-- Detalles del Producto -->
             <div class="col-md-6">
+                <br>
+                <br>
+                <br>
                 <h2 class="custom-product-title">{{producto.nombre}}</h2>
                 <p class="custom-product-price">{{producto.price}}</p>
                 <p class="custom-product-description">
@@ -34,7 +37,11 @@
                                 
                 {% if user.is_authenticated %}
                     <div class="d-flex align-items-center mb-3">
-                        <img src="{{ request.user.perfil.imagen_perfil.url }}" alt="{{ request.user.username }}" class="rounded-circle" width="70" height="70">
+                        {% if request.user.perfil.imagen_perfil and request.user.perfil.imagen_perfil.url %}
+                            <img src="{{ request.user.perfil.imagen_perfil.url }}" alt="{{ request.user.username }}" class="rounded-circle" width="70" height="70">
+                        {% else %}
+                            <img src="{% static 'appCuentas/assets/img/userDefault.png' %}" class="rounded-circle" width="70" height="70" alt="Foto de Perfil">
+                        {% endif %}
                         <div class="ms-3">
                             <h2 class="mb-0">{{ request.user.username }}</h2>
                             <P class="text-muted">Última conexión: {{ request.user.last_login }}</P>
@@ -60,7 +67,11 @@
                         {% for comentario in producto.comentarios.all %}
                         <div class="custom-comment-item mb-3">
                             <div class="d-flex align-items-center">
-                                <img src="{{ comentario.usuario.perfil.imagen_perfil.url }}" alt="{{ comentario.usuario.username }}" class="rounded-circle" width="40" height="40">
+                                {% if comentario.usuario.perfil.imagen_perfil and comentario.usuario.perfil.imagen_perfil.url %}
+                                    <img src="{{ comentario.usuario.perfil.imagen_perfil.url }}" alt="{{ comentario.usuario.username }}" class="rounded-circle" width="70" height="70">
+                                {% else %}
+                                    <img src="{% static 'appCuentas/assets/img/userDefault.png' %}" class="rounded-circle" width="70" height="70" alt="Foto de Perfil">
+                                {% endif %}
                                 <div class="ms-3">
                                     <p class="custom-comment-name mb-0"><strong>{{ comentario.usuario.username }}:</strong></p>
                                     <small class="text-muted">{{ comentario.fecha }}</small>
@@ -74,7 +85,6 @@
                             No hay comentarios disponibles aún.
                         </div>
                     {% endif %}
-                        
                 </div>
             </div>
         </div>

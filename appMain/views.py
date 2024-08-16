@@ -6,7 +6,7 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-
+from django.contrib import messages
 
 def inicio(request):
     return render(request, 'appMain/index.html')
@@ -16,27 +16,36 @@ def about(request):
 
 @login_required
 def createProducts(request):
-     
-     if request.method == 'POST':
-        nombre = request.POST['nombre']
-        precio = request.POST['precio']
-        categoria = request.POST['categoria']
-        descripcion = request.POST['descripcion']
-        imagen = request.FILES['imagen']
+    usuario = request.user
+    
+    # Verificar si el perfil está configurado (solo ciudad y teléfono son obligatorios)
+    perfil_configurado = all([
+        usuario.perfil.telefono, 
+        usuario.perfil.ciudad
+    ])
 
-        producto = Producto(
-            nombre=nombre,
-            precio=precio,
-            categoria=categoria,
-            descripcion=descripcion,
-            imagen=imagen,
-            vendedor=request.user
-        )
+    if request.method == 'POST':
+        if not perfil_configurado:
+            return render(request, 'appMain/createProducts.html', {'perfil_no_configurado': True})
+        else:
+            nombre = request.POST['nombre']
+            precio = request.POST['precio']
+            categoria = request.POST['categoria']
+            descripcion = request.POST['descripcion']
+            imagen = request.FILES.get('imagen', None)
+            producto = Producto(
+                nombre=nombre,
+                precio=precio,
+                categoria=categoria,
+                descripcion=descripcion,
+                imagen=imagen,
+                vendedor=request.user
+            )
+            producto.save()
 
-        producto.save()
+            return redirect('products')
 
-        return redirect('products')
-     return render(request, 'appMain/createProducts.html')
+    return render(request, 'appMain/createProducts.html')
     
 def products(request):
     productos_componentes = Producto.objects.filter(categoria='componentes')
@@ -70,7 +79,7 @@ class deleteProducts(LoginRequiredMixin,DeleteView):
 
 class comentProducts(LoginRequiredMixin, CreateView):
     model = Comentario
-    template_name = "appMain/detailsProducts"
+    template_name = "appMain/detailsProducts.html"
     fields= ['texto']
 
     def form_valid(self, form):

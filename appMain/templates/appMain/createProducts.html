@@ -49,4 +49,36 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal de advertencia -->
+    <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="perfilModalLabel">Perfil No Configurado</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Debes configurar tu perfil completando la ciudad y el teléfono antes de poder crear un producto.
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'perfil' %}" class="btn btn-primary">Configurar Perfil</a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            {% if perfil_no_configurado %}
+            var perfilModal = new bootstrap.Modal(document.getElementById('perfilModal'));
+            perfilModal.show();
+            {% endif %}
+        });
+    </script>
 {% endblock %}
